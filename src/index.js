@@ -188,7 +188,7 @@ class LoadPanel extends Panel {
       filter.firstRun = true;
       filter.mask.delete();
       setTimeout(() => {
-        filter.apply(...filter.defaultOptions);
+        filter.apply();
       }, 0);
     }
   };
@@ -400,7 +400,7 @@ class FilterPanel extends LoadPanel {
     this.selectedIndex = selectedIndex;
     const filter = this.filters[currClass];
     this.currentFilter = filter;
-    filter.apply(...filter.defaultOptions);
+    filter.apply();
   }
 
   addEvents(panel) {
@@ -428,7 +428,6 @@ class FilterPanel extends LoadPanel {
       apply: (radius) => {
         this.inpaint(radius);
       },
-      defaultOptions: [1],
       inputs: {
         radius: panel.querySelector(".radius"),
       },
@@ -470,13 +469,9 @@ class FilterPanel extends LoadPanel {
     }
   }
 
-  inpaint(radius) {
+  inpaint() {
     const filter = this.filters.inpaint;
-    if (radius === undefined) {
-      radius = Number(filter.inputs.radius.value);
-    } else {
-      filter.inputs.radius.value = radius;
-    }
+    const radius = Number(filter.inputs.radius.value);
     const src = cv.imread(this.originalCanvas);
     if (!filter.mask) filter.mask = new cv.Mat.zeros(src.rows, src.cols, cv.CV_8U_C1);
     this.updateMask(filter.mask, src.rows, src.cols);
