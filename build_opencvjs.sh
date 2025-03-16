@@ -1,6 +1,7 @@
 base_dir=${HOME}/workspace
 emsdk_dir=${base_dir}/emsdk  # 3.1.74
 opencv_dir=${base_dir}/opencv  # 4.11.0
+# opencv_contrib_dir=${base_dir}/opencv_contrib  # 4.11.0
 build_py=${opencv_dir}/platforms/js/build_js.py
 build_dir=${opencv_dir}/build_wasm
 options="\
@@ -16,6 +17,7 @@ options="\
   --disable_single_file \
   --opencv_dir ${opencv_dir} \
   --emscripten_dir ${emsdk_dir}/upstream/emscripten"
+  # --cmake_option="-DOPENCV_EXTRA_MODULES_PATH=${opencv_contrib_dir}/modules" \
 
 source ${emsdk_dir}/emsdk_env.sh
 
