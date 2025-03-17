@@ -283,20 +283,12 @@ class FilterPanel extends LoadPanel {
       this.resizeWell(this.eraserWell);
     };
     panel.querySelector(".opacity").oninput = (event) => {
-      this.originalCanvas.style.opacity = event.target.value;
+      this.paintCanvas.style.opacity = event.target.value;
     };
 
     panel.querySelector(".moveTop").onclick = () => this.moveLoadPanel();
     panel.querySelector(".download").onclick = () => this.download();
     this.addEvents(panel);
-  }
-
-  toggleCanvas() {
-    if (this.canvas.parentNode) {
-      this.canvas.replaceWith(this.originalCanvas);
-    } else {
-      this.originalCanvas.replaceWith(this.canvas);
-    }
   }
 
   resizeWell(target) {
