@@ -182,11 +182,9 @@ class LoadPanel extends Panel {
     filterPanel.setCanvas(img);
     filterPanel.paintPad.clear();
     const filter = filterPanel.currentFilter;
-    if (filter.firstRun) {
-      filter.firstRun = false;
-    } else {
-      filter.firstRun = true;
+    if (filter.mask) {
       filter.mask.delete();
+      filter.mask = null;
     }
   };
 
@@ -431,7 +429,6 @@ class FilterPanel extends LoadPanel {
         radius: panel.querySelector(".radius"),
       },
       mask: undefined,
-      firstRun: true,
     };
     this.addInputEvents(this.filters.inpaint);
   }
