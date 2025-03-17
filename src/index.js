@@ -259,14 +259,15 @@ class FilterPanel extends LoadPanel {
     this.paintCanvasContext = this.paintCanvas.getContext("2d", {
       willReadFrequently: true,
     });
-    this.paintPad = new signaturePad(this.paintCanvas);
+    this.paintPad = new signaturePad(this.paintCanvas, {
+      penColor: "#fff",
+    });
     this.updatePenSize(16);
     this.paintPad.addEventListener("endStroke", () => {
       this.currentFilter.apply();
     });
     this.frontWell = panel.querySelector(".front");
     this.eraserWell = panel.querySelector(".eraser");
-    this.backWell = panel.querySelector(".back");
     panel.querySelector(".penSize").oninput = (event) => {
       const penSize = event.target.value;
       this.updatePenSize(penSize);
@@ -279,11 +280,6 @@ class FilterPanel extends LoadPanel {
     this.eraserWell.onclick = () => {
       this.paintPad.compositeOperation = "destination-out";
       this.resizeWell(this.eraserWell);
-    };
-    this.backWell.onclick = () => {
-      this.paintPad.compositeOperation = "source-over";
-      this.paintPad.penColor = "#010000";
-      this.resizeWell(this.backWell);
     };
     panel.querySelector(".opacity").oninput = (event) => {
       this.originalCanvas.style.opacity = event.target.value;
@@ -303,7 +299,7 @@ class FilterPanel extends LoadPanel {
   }
 
   resizeWell(target) {
-    [this.frontWell, this.eraserWell, this.backWell].forEach((well) => {
+    [this.frontWell, this.eraserWell].forEach((well) => {
       if (well === target) {
         well.style.width = "96px";
         well.style.height = "96px";
@@ -328,7 +324,7 @@ class FilterPanel extends LoadPanel {
     const context = canvas.getContext("2d");
     context.beginPath();
     context.arc(size, size, size, 0, Math.PI * 2);
-    context.fillStyle = "rgba(0, 0, 0, 0.5)";
+    context.fillStyle = "rgba(255, 255, 255, 0.5)";
     context.fill();
     const dataURL = canvas.toDataURL();
     target.style.cursor = `url(${dataURL}) ${size} ${size}, auto`;
@@ -464,7 +460,9 @@ class FilterPanel extends LoadPanel {
     const filter = this.filters.inpaint;
     const radius = Number(filter.inputs.radius.value);
     const src = cv.imread(this.originalCanvas);
-    if (!filter.mask) filter.mask = new cv.Mat.zeros(src.rows, src.cols, cv.CV_8U_C1);
+    if (!filter.mask) {
+      filter.mask = new cv.Mat.zeros(src.rows, src.cols, cv.CV_8U_C1);
+    }
     this.updateMask(filter.mask, src.rows, src.cols);
     cv.cvtColor(src, src, cv.COLOR_RGBA2RGB, 0);
     cv.inpaint(src, filter.mask, src, radius, cv.INPAINT_TELEA);

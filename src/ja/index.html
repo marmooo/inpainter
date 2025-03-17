@@ -51,9 +51,8 @@
       .paintCanvas { top: 0; left: 0; }
       .paintPanel { display:flex; justify-content:center; align-items:center; height:96px; }
       .palette { display:flex; justify-content:center; align-items:center; }
-      .front { width:64px; height:64px; background:white; color:black; }
+      .front { width:96px; height:96px; background:white; color:black; }
       .eraser { width:64px; height:64px; background:siver; }
-      .back { width:64px; height:64px; background:black; color:white; }
       .panelContainer { display:flex; flex-direction:column; }
       .canvasContainer { width:100%; height:calc(100vh - 110px); }
       .toolbar { display:flex; flex-direction:row; justify-content:space-between; }
@@ -155,9 +154,6 @@
                     </button>
                     <button title="選択を解除" class="palette eraser border border-5 rounded-circle" type="button" data-bs-toggle="tooltip">
                       <div>eraser</div>
-                    </button>
-                    <button title="復元したいオブジェクトを選択" class="palette back border border-5 rounded-circle" type="button" data-bs-toggle="tooltip">
-                      <div>back</div>
                     </button>
                   </div>
                   <div class="form-group d-flex align-items-center">
