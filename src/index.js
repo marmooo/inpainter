@@ -432,8 +432,8 @@ class FilterPanel extends LoadPanel {
   addInpaintEvents(panel) {
     this.filters.inpaint = {
       root: panel,
-      apply: (radius) => {
-        this.inpaint(radius);
+      apply: () => {
+        this.inpaint();
       },
       inputs: {
         radius: panel.querySelector(".radius"),
