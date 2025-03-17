@@ -449,23 +449,14 @@ class FilterPanel extends LoadPanel {
     resizedCanvasContext.drawImage(this.paintCanvas, 0, 0, cols, rows);
     const imageData = resizedCanvasContext.getImageData(0, 0, cols, rows);
     const uint8Array = imageData.data;
-    // // slow but safe
-    // for (let y = 0; y < mask.rows; y++) {
-    //   for (let x = 0; x < mask.cols; x++) {
-    //     const index = (y * mask.cols + x) * 4;
-    //     const r = uint8Array[index];
-    //     if (r === 1) mask.ucharPtr(y, x)[0] = 0;
-    //     if (r === 255) mask.ucharPtr(y, x)[0] = 1;
-    //   }
-    // }
-    // fast but danger
-    const maskDataPtr = mask.data.byteOffset;
-    const maskSize = mask.rows * mask.cols;
-    const heap = cv.HEAPU8.subarray(maskDataPtr, maskDataPtr + maskSize);
-    for (let i = 0; i < maskSize; i++) {
+    const maskData = mask.data;
+    for (let i = 0; i < maskData.length; i++) {
       const r = uint8Array[i * 4];
-      if (r === 1) heap[i] = 0;
-      if (r === 255) heap[i] = 1;
+      if (r === 255) {
+        maskData[i] = 1;
+      } else {
+        maskData[i] = 0;
+      }
     }
   }
 
