@@ -1,0 +1,17 @@
+{
+  "core": {
+    "whitelist": {
+      "Algorithm": []
+    }
+  },
+  "imgproc": {
+    "whitelist": {
+      "": ["cvtColor"]
+    }
+  },
+  "photo": {
+    "whitelist": {
+      "": ["inpaint"]
+    }
+  }
+}
