@@ -1,12 +1,9 @@
-# This configuration file is designed to be used with the my build script.
-# My build script can be obtained from the link below.
+# This build script is designed to be used with the following build script.
 #   https://github.com/marmooo/mini-web-apps/blob/main/opencv/embindgen.py
-# It has a caching feature that reduces build time significantly.
-# It can be used by replacing the original below.
+# It has the ability to cache builds and minimize output.
+# You can use it by replacing the original script below.
 #   ${opencv_dir}/modules/js/generator/embindgen.py
-# It is possible to build without using my build script.
-# The problem are that (1) rebuilding takes a lot of time,
-# and (2) the output size is large unless you reconfigure cmake_option.
+# You can also build wasm without my build script, but reconfigure cmake_options.
 base_dir=${HOME}/workspace
 emsdk_dir=${base_dir}/emsdk  # 3.1.74
 opencv_dir=${base_dir}/opencv  # 4.11.0
