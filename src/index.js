@@ -237,7 +237,6 @@ class FilterPanel extends LoadPanel {
 
   constructor(panel) {
     super(panel);
-    this.panelContainer = panel.querySelector(".panelContainer");
     this.selectedIndex = 0;
     this.canvas = panel.querySelector(".image");
     this.canvasContext = this.canvas.getContext("2d", {
@@ -357,7 +356,7 @@ class FilterPanel extends LoadPanel {
 
   show() {
     super.show();
-    this.panelContainer.scrollIntoView({ behavior: "instant" });
+    this.panel.scrollIntoView({ behavior: "instant" });
   }
 
   moveLoadPanel() {
