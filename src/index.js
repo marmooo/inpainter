@@ -143,12 +143,6 @@ class LoadPanel extends Panel {
       new imageCompareViewer(node, { addCircle: true }).mount();
       images[1].classList.remove("d-none");
     }
-    const clipboardButton = panel.querySelector(".clipboard");
-    if (clipboardButton) {
-      clipboardButton.onclick = (event) => {
-        this.loadClipboardImage(event);
-      };
-    }
     panel.querySelector(".selectImage").onclick = () => {
       panel.querySelector(".inputImage").click();
     };
@@ -237,6 +231,25 @@ class FilterPanel extends LoadPanel {
 
   constructor(panel) {
     super(panel);
+    panel.querySelector(".saveClipboard").onclick = async () => {
+      const svgs = event.currentTarget.children;
+      svgs[0].classList.add("d-none");
+      svgs[1].classList.remove("d-none");
+      const blob = await new Promise((resolve) =>
+        this.canvas.toBlob(resolve, "image/png")
+      );
+      await navigator.clipboard.write([
+        new ClipboardItem({ "image/png": blob }),
+      ]);
+      setTimeout(() => {
+        svgs[0].classList.remove("d-none");
+        svgs[1].classList.add("d-none");
+      }, 2000);
+    };
+    panel.querySelector(".loadClipboard").onclick = (event) => {
+      this.loadClipboardImage(event);
+    };
+
     this.selectedIndex = 0;
     this.canvas = panel.querySelector(".image");
     this.canvasContext = this.canvas.getContext("2d", {
