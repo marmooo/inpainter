@@ -419,7 +419,7 @@ class FilterPanel extends LoadPanel {
       input.addEventListener("input", () => {
         this.canvas.classList.add("loading");
         setTimeout(() => {
-          this.currentFilter.apply();
+          filter.apply();
           this.canvas.classList.remove("loading");
         }, 0);
       });
