@@ -1,4 +1,4 @@
-import { Tooltip } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/+esm";
+import { Tooltip } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/+esm";
 import imageCompareViewer from "https://cdn.jsdelivr.net/npm/image-compare-viewer@1.6.2/+esm";
 import signaturePad from "https://cdn.jsdelivr.net/npm/signature_pad@5.0.7/+esm";
 
