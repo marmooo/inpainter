@@ -15,18 +15,18 @@ build_threads_dir=${opencv_dir}/build_threads
 build_threaded_simd_dir=${opencv_dir}/build_threaded-simd
 options="\
   --build_wasm \
-  --cmake_option="-DBUILD_ZLIB=OFF" \
-  --cmake_option="-DBUILD_opencv_calib3d=ON" \
-  --cmake_option="-DBUILD_opencv_dnn=ON" \
-  --cmake_option="-DBUILD_opencv_features2d=ON" \
-  --cmake_option="-DBUILD_opencv_flann=ON" \
-  --cmake_option="-DBUILD_opencv_imgcodecs=ON" \
-  --cmake_option="-DBUILD_opencv_photo=ON" \
-  --cmake_option="-DBUILD_opencv_video=ON" \
-  --cmake_option="-DBUILD_opencv_xphoto=ON" \
-  --cmake_option="-DBUILD_opencv_ximgproc=ON" \
-  --cmake_option="-DBUILD_EXAMPLES=OFF" \
-  --cmake_option="-DOPENCV_EXTRA_MODULES_PATH=${opencv_contrib_dir}/modules" \
+  --cmake_option=-DBUILD_ZLIB=OFF \
+  --cmake_option=-DBUILD_opencv_calib3d=ON \
+  --cmake_option=-DBUILD_opencv_dnn=ON \
+  --cmake_option=-DBUILD_opencv_features2d=ON \
+  --cmake_option=-DBUILD_opencv_flann=ON \
+  --cmake_option=-DBUILD_opencv_imgcodecs=ON \
+  --cmake_option=-DBUILD_opencv_photo=ON \
+  --cmake_option=-DBUILD_opencv_video=ON \
+  --cmake_option=-DBUILD_opencv_xphoto=ON \
+  --cmake_option=-DBUILD_opencv_ximgproc=ON \
+  --cmake_option=-DBUILD_EXAMPLES=OFF \
+  --cmake_option=-DOPENCV_EXTRA_MODULES_PATH=${opencv_contrib_dir}/modules \
   --config whitelist.json \
   --disable_single_file \
   --opencv_dir ${opencv_dir} \
