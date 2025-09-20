@@ -1,4 +1,4 @@
-const CACHE_NAME = "2025-09-09 00:19";
+const CACHE_NAME = "2025-09-20 11:17";
 const urlsToCache = [
   "/inpainter/",
   "/inpainter/en/",
