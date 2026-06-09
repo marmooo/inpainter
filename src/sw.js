@@ -1,6 +1,5 @@
-const cacheName = "2026-06-09 00:00";
+const cacheName = "2026-06-10 00:00";
 const urlsToCache = [
-  "/inpainter/coi-serviceworker.js",
   "/inpainter/index.js",
   "/inpainter/img/before.webp",
   "/inpainter/img/after.webp",
