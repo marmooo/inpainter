@@ -1,6 +1,6 @@
 import { Tooltip } from "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/+esm";
 import imageCompareViewer from "https://cdn.jsdelivr.net/npm/image-compare-viewer@1.6.2/+esm";
-import signaturePad from "https://cdn.jsdelivr.net/npm/signature_pad@5.1.3/+esm";
+import signaturePad from "https://cdn.jsdelivr.net/npm/signature_pad@5.1.4/+esm";
 
 function toggleDarkMode() {
   const html = document.documentElement;
