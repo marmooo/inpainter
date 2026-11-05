@@ -1,4 +1,4 @@
-const cacheName = "2026-09-22 00:00";
+const cacheName = "2026-11-05 00:00";
 const urlsToCache = [
   "/inpainter/index.js",
   "/inpainter/img/before.webp",
